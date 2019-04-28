@@ -23,7 +23,7 @@
 		48AC74C720A66C2A00AA1788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC74C620A66C2A00AA1788 /* AppDelegate.swift */; };
 		48AC74CE20A66C2C00AA1788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CD20A66C2C00AA1788 /* Assets.xcassets */; };
 		48AC74D120A66C2C00AA1788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CF20A66C2C00AA1788 /* LaunchScreen.storyboard */; };
-		AF020F0122757898009756C0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF020F0022757898009756C0 /* LoginViewController.xib */; };
+		AF020F0522757D16009756C0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF020F0422757D16009756C0 /* LoginViewController.xib */; };
 		AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7C71FB2274D68800F7820A /* Main.storyboard */; };
 		AF8933E6227423430001E760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8933E5227423430001E760 /* GoogleService-Info.plist */; };
 		D9BDDBE09FF401D0C67E99FE /* Pods_RWRC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94984FD704383917A0A022C8 /* Pods_RWRC.framework */; };
@@ -51,7 +51,7 @@
 		48AC74D220A66C2C00AA1788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWRC.release.xcconfig"; path = "Pods/Target Support Files/Pods-RWRC/Pods-RWRC.release.xcconfig"; sourceTree = "<group>"; };
 		94984FD704383917A0A022C8 /* Pods_RWRC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWRC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF020F0022757898009756C0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = "../../../Downloads/RWRC/Final-RWRC/RWRC/View Controllers/LoginViewController.xib"; sourceTree = "<group>"; };
+		AF020F0422757D16009756C0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		AF7C71FB2274D68800F7820A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF8933E5227423430001E760 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +125,7 @@
 				4859775220A68B1C00429CB3 /* EventsViewController.swift */,
 				4859776520A7AD3800429CB3 /* ChatViewController.swift */,
 				4859774E20A68AF800429CB3 /* LoginViewController.swift */,
-				AF020F0022757898009756C0 /* LoginViewController.xib */,
+				AF020F0422757D16009756C0 /* LoginViewController.xib */,
 				4859775620A68C6F00429CB3 /* NavigationController.swift */,
 			);
 			path = "View Controllers";
@@ -233,8 +233,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF020F0522757D16009756C0 /* LoginViewController.xib in Resources */,
 				AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */,
-				AF020F0122757898009756C0 /* LoginViewController.xib in Resources */,
 				AF8933E6227423430001E760 /* GoogleService-Info.plist in Resources */,
 				48AC74D120A66C2C00AA1788 /* LaunchScreen.storyboard in Resources */,
 				48AC74CE20A66C2C00AA1788 /* Assets.xcassets in Resources */,
