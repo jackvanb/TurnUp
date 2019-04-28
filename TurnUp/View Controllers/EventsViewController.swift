@@ -75,11 +75,9 @@ class EventsViewController: UITableViewController {
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: eventCellIdentifier)
     
     toolbarItems = [
-      UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut)),
       UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
       UIBarButtonItem(customView: toolbarLabel),
       UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-      UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed)),
     ]
     toolbarLabel.text = AppSettings.displayName
     
@@ -109,45 +107,6 @@ class EventsViewController: UITableViewController {
   
   // MARK: - Actions
   
-  @objc private func signOut() {
-    let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
-    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
-      do {
-        try Auth.auth().signOut()
-      } catch {
-        print("Error signing out: \(error.localizedDescription)")
-      }
-    }))
-    present(ac, animated: true, completion: nil)
-  }
-  
-  @objc private func addButtonPressed() {
-    let ac = UIAlertController(title: "Create a new Event", message: nil, preferredStyle: .alert)
-    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    ac.addTextField { field in
-      field.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-      field.enablesReturnKeyAutomatically = true
-      field.autocapitalizationType = .words
-      field.clearButtonMode = .whileEditing
-      field.placeholder = "Event name"
-      field.returnKeyType = .done
-      field.tintColor = .primary
-    }
-    
-    let createAction = UIAlertAction(title: "Create", style: .default, handler: { _ in
-      self.createEvent()
-    })
-    createAction.isEnabled = false
-    ac.addAction(createAction)
-    ac.preferredAction = createAction
-    
-    present(ac, animated: true) {
-      ac.textFields?.first?.becomeFirstResponder()
-    }
-    currentEventAlertController = ac
-  }
-  
   @objc private func textFieldDidChange(_ field: UITextField) {
     guard let ac = currentEventAlertController else {
       return
@@ -157,24 +116,7 @@ class EventsViewController: UITableViewController {
   }
   
   // MARK: - Helpers
-  
-  private func createEvent() {
-    guard let ac = currentEventAlertController else {
-      return
-    }
     
-    guard let eventName = ac.textFields?.first?.text else {
-      return
-    }
-    
-    let event = Event(name: eventName)
-    eventReference.addDocument(data: event.representation) { error in
-      if let e = error {
-        print("Error saving event: \(e.localizedDescription)")
-      }
-    }
-  }
-  
   private func addEventToTable(_ event: Event) {
     guard !events.contains(event) else {
       return
