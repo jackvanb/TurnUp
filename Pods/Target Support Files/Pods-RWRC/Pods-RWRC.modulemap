@@ -1,0 +1,6 @@
+framework module Pods_RWRC {
+  umbrella header "Pods-RWRC-umbrella.h"
+
+  export *
+  module * { export * }
+}
