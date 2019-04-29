@@ -72,7 +72,7 @@ class EventsViewController: UITableViewController {
     super.viewDidLoad()
     
     clearsSelectionOnViewWillAppear = true
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: eventCellIdentifier)
+    tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: eventCellIdentifier)
     
     toolbarItems = [
       UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -189,6 +189,8 @@ extension EventsViewController {
     
     cell.accessoryType = .disclosureIndicator
     cell.textLabel?.text = events[indexPath.row].name
+    cell.detailTextLabel?.text = events[indexPath.row].organization
+    
     
     return cell
   }

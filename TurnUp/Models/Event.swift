@@ -32,10 +32,12 @@ struct Event {
   
   let id: String?
   let name: String
+  let organization: String
   
-  init(name: String) {
+  init(name: String, organization: String) {
     id = nil
     self.name = name
+    self.organization = organization
   }
   
   init?(document: QueryDocumentSnapshot) {
@@ -45,8 +47,13 @@ struct Event {
       return nil
     }
     
+    guard let organization = data["organization"] as? String else {
+      return nil
+    }
+    
     id = document.documentID
     self.name = name
+    self.organization = organization
   }
   
 }
@@ -54,7 +61,7 @@ struct Event {
 extension Event: DatabaseRepresentation {
   
   var representation: [String : Any] {
-    var rep = ["name": name]
+    var rep = ["name": name, "organization": organization]
     
     if let id = id {
       rep["id"] = id

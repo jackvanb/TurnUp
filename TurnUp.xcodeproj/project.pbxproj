@@ -24,6 +24,7 @@
 		48AC74CE20A66C2C00AA1788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CD20A66C2C00AA1788 /* Assets.xcassets */; };
 		48AC74D120A66C2C00AA1788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CF20A66C2C00AA1788 /* LaunchScreen.storyboard */; };
 		AF020F0522757D16009756C0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF020F0422757D16009756C0 /* LoginViewController.xib */; };
+		AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */; };
 		AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7C71FB2274D68800F7820A /* Main.storyboard */; };
 		AF8933E6227423430001E760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8933E5227423430001E760 /* GoogleService-Info.plist */; };
 		D9BDDBE09FF401D0C67E99FE /* Pods_RWRC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94984FD704383917A0A022C8 /* Pods_RWRC.framework */; };
@@ -52,6 +53,7 @@
 		6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWRC.release.xcconfig"; path = "Pods/Target Support Files/Pods-RWRC/Pods-RWRC.release.xcconfig"; sourceTree = "<group>"; };
 		94984FD704383917A0A022C8 /* Pods_RWRC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWRC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF020F0422757D16009756C0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		AF7C71FB2274D68800F7820A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF8933E5227423430001E760 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 		48AC74C520A66C2A00AA1788 /* TurnUp */ = {
 			isa = PBXGroup;
 			children = (
+				AF50105822758DA0007F91B1 /* Views */,
 				48AC74DA20A66C9700AA1788 /* Controllers */,
 				4859775820A68C9B00429CB3 /* Extensions */,
 				48AC74D920A66C8600AA1788 /* Models */,
@@ -170,6 +173,14 @@
 				6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AF50105822758DA0007F91B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +330,7 @@
 				4859776820A7D34400429CB3 /* Message.swift in Sources */,
 				4859776020A7993F00429CB3 /* Event.swift in Sources */,
 				4859776620A7AD3800429CB3 /* ChatViewController.swift in Sources */,
+				AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */,
 				4859775A20A68CAC00429CB3 /* UIColor+Additions.swift in Sources */,
 				481A352C20A8E6DC008CD16B /* UIImage+Additions.swift in Sources */,
 			);
