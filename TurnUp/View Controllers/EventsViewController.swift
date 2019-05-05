@@ -40,6 +40,8 @@ class EventsViewController: UITableViewController {
   }()
   
   private let eventCellIdentifier = "eventCell"
+  private let eventCellHeight = 300
+  private let eventCellPadding = 20
   private var currentEventAlertController: UIAlertController?
   
   private let db = Firestore.firestore()
@@ -70,9 +72,10 @@ class EventsViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    clearsSelectionOnViewWillAppear = true
-    tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: eventCellIdentifier)
+  
+   clearsSelectionOnViewWillAppear = true
+    tableView.register(UINib(nibName: "EventTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: eventCellIdentifier)
+    tableView.separatorStyle = .none
     
     toolbarItems = [
       UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -181,17 +184,31 @@ extension EventsViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 55
+    return CGFloat(eventCellHeight + eventCellPadding)
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
     
-    cell.accessoryType = .disclosureIndicator
-    cell.textLabel?.text = events[indexPath.row].name
-    cell.detailTextLabel?.text = events[indexPath.row].organization
-    
-    
+    // Clear Backgorund
+   // UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease]
+   // backView.backgroundColor = [UIColor clearColor]
+    // Shadow and Radius for Circle Button
+    cell.eventButton.layer.shadowColor = UIColor.black.cgColor
+    cell.eventButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+    cell.eventButton.layer.masksToBounds = false
+    cell.eventButton.layer.shadowRadius = 1.0
+    cell.eventButton.layer.shadowOpacity = 0.5
+    cell.eventButton.layer.cornerRadius = 10
+    //cell.backgroundView = backView
+    cell.backgroundColor = UIColor.clear
+   // cell.accessoryType = .disclosureIndicator
+    cell.eventTitle?.text = events[indexPath.row].name
+    cell.eventOrg?.text = events[indexPath.row].organization
+    print(events[indexPath.row].date)
+    cell.eventDate?.text = events[indexPath.row].date
+//    cell.textLabel?.text = events[indexPath.row].name
+//    cell.detailTextLabel?.text = events[indexPath.row].organization
     return cell
   }
   
