@@ -29,6 +29,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class EventsViewController: UITableViewController {
   
@@ -45,6 +46,7 @@ class EventsViewController: UITableViewController {
   private var currentEventAlertController: UIAlertController?
   
   private let db = Firestore.firestore()
+  private let storage = Storage.storage()
   
   private var eventReference: CollectionReference {
     return db.collection("events")
@@ -189,6 +191,18 @@ extension EventsViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
+    // Download Event Image
+    if events[indexPath.row].downloadURL != nil {
+      let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
+      let megaByte = Int64(1 * 1024 * 1024)
+      
+      ref.getData(maxSize: megaByte) { data, error in
+        guard let imageData = data else {
+          return
+        }
+        cell.eventImage.image = UIImage(data: imageData)
+      }
+    }
     
     // Clear Backgorund
    // UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease]
@@ -205,7 +219,6 @@ extension EventsViewController {
    // cell.accessoryType = .disclosureIndicator
     cell.eventTitle?.text = events[indexPath.row].name
     cell.eventOrg?.text = events[indexPath.row].organization
-    print(events[indexPath.row].date)
     cell.eventDate?.text = events[indexPath.row].date
 //    cell.textLabel?.text = events[indexPath.row].name
 //    cell.detailTextLabel?.text = events[indexPath.row].organization

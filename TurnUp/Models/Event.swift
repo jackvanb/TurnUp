@@ -35,6 +35,8 @@ struct Event {
   let organization: String
   let date: String
   
+  var downloadURL: URL? = nil
+  
   init(name: String, organization: String, date: String) {
     id = nil
     self.name = name
@@ -57,6 +59,10 @@ struct Event {
       return nil
     }
     
+    if let urlString = data["url"] as? String, let url = URL(string: urlString) {
+      downloadURL = url
+    }
+    
     id = document.documentID
     self.name = name
     self.organization = organization
@@ -72,6 +78,10 @@ extension Event: DatabaseRepresentation {
     
     if let id = id {
       rep["id"] = id
+    }
+    
+    if let url = downloadURL {
+      rep["url"] = url.absoluteString
     }
     
     return rep
