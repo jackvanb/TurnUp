@@ -3,7 +3,7 @@
 //  TurnUp
 //
 //  Created by Jack Van Boening on 5/3/19.
-//  Copyright © 2019 Razeware. All rights reserved.
+//  Copyright © 2019 Jack Van Boening. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,9 @@ class EventTableViewCell: UITableViewCell {
   @IBOutlet weak var eventDate: UILabel!
   @IBOutlet weak var eventImage: UIImageView!
   @IBOutlet weak var eventButton: UIButton!
-  
+  @IBOutlet weak var eventAddress: UILabel!
+  @IBOutlet weak var eventCount: UILabel!
+    
   override func awakeFromNib() {
       super.awakeFromNib()
       // Initialization code

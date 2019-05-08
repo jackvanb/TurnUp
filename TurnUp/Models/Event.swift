@@ -1,4 +1,4 @@
-/// Copyright (c) 2018 Razeware LLC
+/// Copyright (c) 2018 Jack Van Boening LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,19 @@ struct Event {
   let name: String
   let organization: String
   let date: String
+  let address: String
+  let count: Int
   
+  var goingList: [String]? = []
   var downloadURL: URL? = nil
   
-  init(name: String, organization: String, date: String) {
+  init(name: String, organization: String, date: String, address: String, count: Int) {
     id = nil
     self.name = name
     self.organization = organization
     self.date = date
+    self.address = address
+    self.count = count
   }
   
   init?(document: QueryDocumentSnapshot) {
@@ -59,6 +64,18 @@ struct Event {
       return nil
     }
     
+    guard let address = data["address"] as? String else {
+      return nil
+    }
+    
+    guard let count = data["count"] as? Int else {
+      return nil
+    }
+    
+    if let list = data["goingList"] as? [String] {
+      goingList = list
+    }
+    
     if let urlString = data["url"] as? String, let url = URL(string: urlString) {
       downloadURL = url
     }
@@ -67,6 +84,8 @@ struct Event {
     self.name = name
     self.organization = organization
     self.date = date
+    self.address = address
+    self.count = count
   }
   
 }
@@ -74,7 +93,8 @@ struct Event {
 extension Event: DatabaseRepresentation {
   
   var representation: [String : Any] {
-    var rep = ["name": name, "organization": organization, "date" : date]
+    var rep = ["name": name, "organization": organization, "date" : date,
+               "address" : address, "count" : count] as [String : Any]
     
     if let id = id {
       rep["id"] = id
@@ -82,6 +102,10 @@ extension Event: DatabaseRepresentation {
     
     if let url = downloadURL {
       rep["url"] = url.absoluteString
+    }
+    
+    if let list = goingList {
+      rep["goingList"] = list
     }
     
     return rep

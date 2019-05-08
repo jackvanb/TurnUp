@@ -1,4 +1,4 @@
-/// Copyright (c) 2018 Razeware LLC
+/// Copyright (c) 2018 Jack Van Boening LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -51,8 +51,9 @@ class EventsViewController: UITableViewController {
   private var eventReference: CollectionReference {
     return db.collection("events")
   }
-  
+    
   private var events = [Event]()
+  private var eventImages = [Int : UIImage]()
   private var eventListener: ListenerRegistration?
   
   private let currentUser: User
@@ -120,6 +121,104 @@ class EventsViewController: UITableViewController {
     ac.preferredAction?.isEnabled = field.hasText
   }
   
+  @objc func buttonClicked(sender: UIButton) {
+    let button = sender
+    let row = sender.tag
+    
+    guard let eventID = events[row].id else {
+      return
+    }
+    
+    if !button.isSelected {
+      button.backgroundColor = UIColor.secondary
+      button.isSelected = true
+      
+      // Update eventCount
+      let eventRef = eventReference.document(eventID)
+      db.runTransaction({ (transaction, errorPointer) -> Any? in
+        let eventDocument: DocumentSnapshot
+        do {
+          try eventDocument = transaction.getDocument(eventRef)
+        } catch let fetchError as NSError {
+          errorPointer?.pointee = fetchError
+          return nil
+        }
+        
+        guard let oldCount = eventDocument.data()?["count"] as? Int else {
+          let error = NSError(
+            domain: "AppErrorDomain",
+            code: -1,
+            userInfo: [
+              NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(eventDocument)"
+            ]
+          )
+          errorPointer?.pointee = error
+          return nil
+        }
+        
+        let newCount = oldCount + 1
+        
+        transaction.updateData(["count": newCount], forDocument: eventRef)
+        return newCount
+      }) { (object, error) in
+        if let error = error {
+          print("Error updating count: \(error)")
+        } else {
+          print("Count increased to \(object!)")
+        }
+      }
+    }
+    else {
+      button.backgroundColor = UIColor.clear
+      button.isSelected = false
+      
+      // Update eventCount
+      let eventRef = eventReference.document(eventID)
+      db.runTransaction({ (transaction, errorPointer) -> Any? in
+        let eventDocument: DocumentSnapshot
+        do {
+          try eventDocument = transaction.getDocument(eventRef)
+        } catch let fetchError as NSError {
+          errorPointer?.pointee = fetchError
+          return nil
+        }
+        
+        guard let oldCount = eventDocument.data()?["count"] as? Int else {
+          let error = NSError(
+            domain: "AppErrorDomain",
+            code: -1,
+            userInfo: [
+              NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(eventDocument)"
+            ]
+          )
+          errorPointer?.pointee = error
+          return nil
+        }
+
+        let newCount = oldCount - 1
+        guard newCount >= 0 else {
+          let error = NSError(
+            domain: "AppErrorDomain",
+            code: -2,
+            userInfo: [NSLocalizedDescriptionKey: "Count \(newCount) is negative"]
+          )
+          errorPointer?.pointee = error
+          return nil
+        }
+        
+        transaction.updateData(["count": newCount], forDocument: eventRef)
+        return newCount
+      }) { (object, error) in
+        if let error = error {
+          print("Error updating count: \(error)")
+        } else {
+          print("Count increased to \(object!)")
+        }
+      }
+    }
+    
+  }
+  
   // MARK: - Helpers
     
   private func addEventToTable(_ event: Event) {
@@ -142,7 +241,9 @@ class EventsViewController: UITableViewController {
     }
     
     events[index] = event
-    tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    UIView.performWithoutAnimation {
+      tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+    }
   }
   
   private func removeEventFromTable(_ event: Event) {
@@ -190,38 +291,47 @@ extension EventsViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
+    
     // Download Event Image
-    if events[indexPath.row].downloadURL != nil {
-      let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
-      let megaByte = Int64(1 * 1024 * 1024)
-      
-      ref.getData(maxSize: megaByte) { data, error in
-        guard let imageData = data else {
-          return
+    if eventImages.keys.contains(indexPath.row) {
+      cell.eventImage.image = eventImages[indexPath.row]
+    }
+    else {
+      if events[indexPath.row].downloadURL != nil {
+        let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
+        let megaByte = Int64(1 * 1024 * 1024)
+
+        ref.getData(maxSize: megaByte) { data, error in
+          guard let imageData = data else {
+            // Error
+            return
+          }
+          cell.eventImage.image = UIImage(data: imageData)
+          // Add to dict for future use
+          self.eventImages[indexPath.row] = cell.eventImage.image!
         }
-        cell.eventImage.image = UIImage(data: imageData)
       }
     }
     
-    // Clear Backgorund
-   // UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease]
-   // backView.backgroundColor = [UIColor clearColor]
-    // Shadow and Radius for Circle Button
-    cell.eventButton.layer.shadowColor = UIColor.black.cgColor
-    cell.eventButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-    cell.eventButton.layer.masksToBounds = false
-    cell.eventButton.layer.shadowRadius = 1.0
-    cell.eventButton.layer.shadowOpacity = 0.5
-    cell.eventButton.layer.cornerRadius = 10
-    //cell.backgroundView = backView
+    // Fill Image View
+    cell.eventImage.contentMode = .scaleAspectFill
+    
+    // Evvent Button Target
+    cell.eventButton.tag = indexPath.row
+    cell.eventButton.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
+    
+    // Clear Background
     cell.backgroundColor = UIColor.clear
-   // cell.accessoryType = .disclosureIndicator
+    
+    // Load Data
     cell.eventTitle?.text = events[indexPath.row].name
     cell.eventOrg?.text = events[indexPath.row].organization
     cell.eventDate?.text = events[indexPath.row].date
-//    cell.textLabel?.text = events[indexPath.row].name
-//    cell.detailTextLabel?.text = events[indexPath.row].organization
+    cell.eventAddress?.text = events[indexPath.row].address
+    cell.eventCount?.text = String(events[indexPath.row].count)
+
     return cell
   }
   

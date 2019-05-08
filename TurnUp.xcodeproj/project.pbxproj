@@ -27,6 +27,7 @@
 		AF35BDA8227CCD73001D28F9 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF35BDA6227CCD73001D28F9 /* EventTableViewCell.swift */; };
 		AF35BDA9227CCD73001D28F9 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */; };
 		AF35BDAB227CD8A0001D28F9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF35BDAA227CD8A0001D28F9 /* CardView.swift */; };
+		AF4AFF64228237E20040C33C /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4AFF63228237E10040C33C /* UIButton+Additions.swift */; };
 		AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */; };
 		AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7C71FB2274D68800F7820A /* Main.storyboard */; };
 		AF8933E6227423430001E760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8933E5227423430001E760 /* GoogleService-Info.plist */; };
@@ -59,6 +60,7 @@
 		AF35BDA6227CCD73001D28F9 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		AF35BDAA227CD8A0001D28F9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		AF4AFF63228237E10040C33C /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		AF7C71FB2274D68800F7820A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF8933E5227423430001E760 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				4859775920A68CAC00429CB3 /* UIColor+Additions.swift */,
 				481A352B20A8E6DC008CD16B /* UIImage+Additions.swift */,
 				4859775D20A69CD500429CB3 /* UIView+Additions.swift */,
+				AF4AFF63228237E10040C33C /* UIButton+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,7 +225,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = Razeware;
+				ORGANIZATIONNAME = "Jack Van Boening";
 				TargetAttributes = {
 					48AC74C220A66C2A00AA1788 = {
 						CreatedOnToolsVersion = 9.3;
@@ -337,6 +340,7 @@
 				48AC74C720A66C2A00AA1788 /* AppDelegate.swift in Sources */,
 				4859776420A7A1BD00429CB3 /* DatabaseRepresentation.swift in Sources */,
 				4859774D20A689C700429CB3 /* AppSettings.swift in Sources */,
+				AF4AFF64228237E20040C33C /* UIButton+Additions.swift in Sources */,
 				AF35BDAB227CD8A0001D28F9 /* CardView.swift in Sources */,
 				4859776820A7D34400429CB3 /* Message.swift in Sources */,
 				AF35BDA8227CCD73001D28F9 /* EventTableViewCell.swift in Sources */,

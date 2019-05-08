@@ -3,7 +3,7 @@
 //  TurnUp
 //
 //  Created by Jack Van Boening on 4/28/19.
-//  Copyright © 2019 Razeware. All rights reserved.
+//  Copyright © 2019 Jack Van Boening. All rights reserved.
 //
 
 import UIKit
