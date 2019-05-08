@@ -1,8 +1,8 @@
-platform :ios, "11.0"
+platform :ios, "12.2"
 use_frameworks!
 inhibit_all_warnings!
 
-target 'RWRC' do
+target 'TurnUp' do
   pod 'MessageKit'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
@@ -12,7 +12,7 @@ target 'RWRC' do
       installer.pods_project.targets.each do |target|
           if target.name == 'MessageKit'
               target.build_configurations.each do |config|
-                  config.build_settings['SWIFT_VERSION'] = '4.0'
+                  config.build_settings['SWIFT_VERSION'] = '4.2'
               end
           end
       end
