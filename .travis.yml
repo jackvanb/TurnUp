@@ -1,0 +1,4 @@
+language: objective-c
+xcode_workspace: TurnUp.xcworkspace
+xcode_scheme: TurnUp [Development]
+xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
