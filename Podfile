@@ -3,7 +3,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'TurnUp' do
-  pod 'MessageKit'
+  pod 'MessageKit', '0.13.1'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
@@ -12,7 +12,7 @@ target 'TurnUp' do
       installer.pods_project.targets.each do |target|
           if target.name == 'MessageKit'
               target.build_configurations.each do |config|
-                  config.build_settings['SWIFT_VERSION'] = '4.2'
+                  config.build_settings['SWIFT_VERSION'] = '4.0'
               end
           end
       end

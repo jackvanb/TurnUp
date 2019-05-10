@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099EE12EE6508D465397F21B /* Pods_TurnUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166B1E57BFAAB8B99205FE93 /* Pods_TurnUp.framework */; };
 		481A352C20A8E6DC008CD16B /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A352B20A8E6DC008CD16B /* UIImage+Additions.swift */; };
 		481A352E20A8E956008CD16B /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A352D20A8E956008CD16B /* UICollectionView+Additions.swift */; };
 		4859774D20A689C700429CB3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859774C20A689C700429CB3 /* AppSettings.swift */; };
@@ -31,11 +32,10 @@
 		AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */; };
 		AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7C71FB2274D68800F7820A /* Main.storyboard */; };
 		AF8933E6227423430001E760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8933E5227423430001E760 /* GoogleService-Info.plist */; };
-		D9BDDBE09FF401D0C67E99FE /* Pods_RWRC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94984FD704383917A0A022C8 /* Pods_RWRC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		138B8A2C43BFE3C4675D8981 /* Pods-RWRC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWRC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RWRC/Pods-RWRC.debug.xcconfig"; sourceTree = "<group>"; };
+		166B1E57BFAAB8B99205FE93 /* Pods_TurnUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		481A352B20A8E6DC008CD16B /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		481A352D20A8E956008CD16B /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
 		4859774C20A689C700429CB3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -54,8 +54,8 @@
 		48AC74CD20A66C2C00AA1788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48AC74D020A66C2C00AA1788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48AC74D220A66C2C00AA1788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWRC.release.xcconfig"; path = "Pods/Target Support Files/Pods-RWRC/Pods-RWRC.release.xcconfig"; sourceTree = "<group>"; };
-		94984FD704383917A0A022C8 /* Pods_RWRC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWRC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E9A9849AAC6A88F067E206D /* Pods-TurnUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnUp.release.xcconfig"; path = "Target Support Files/Pods-TurnUp/Pods-TurnUp.release.xcconfig"; sourceTree = "<group>"; };
+		AE4C2048471669CF6A9B89D0 /* Pods-TurnUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnUp.debug.xcconfig"; path = "Target Support Files/Pods-TurnUp/Pods-TurnUp.debug.xcconfig"; sourceTree = "<group>"; };
 		AF020F0422757D16009756C0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		AF35BDA6227CCD73001D28F9 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
@@ -71,21 +71,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9BDDBE09FF401D0C67E99FE /* Pods_RWRC.framework in Frameworks */,
+				099EE12EE6508D465397F21B /* Pods_TurnUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27078574AC22DE5EDD982EC5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				94984FD704383917A0A022C8 /* Pods_RWRC.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4859775820A68C9B00429CB3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,8 +95,8 @@
 			children = (
 				48AC74C520A66C2A00AA1788 /* TurnUp */,
 				48AC74C420A66C2A00AA1788 /* Products */,
-				6EDC27F561A43516D3AEBF14 /* Pods */,
-				27078574AC22DE5EDD982EC5 /* Frameworks */,
+				EFA474F53AE4B1F49A22DDF7 /* Pods */,
+				95D6337D579396FB1773F72E /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -175,13 +167,12 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6EDC27F561A43516D3AEBF14 /* Pods */ = {
+		95D6337D579396FB1773F72E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				138B8A2C43BFE3C4675D8981 /* Pods-RWRC.debug.xcconfig */,
-				6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */,
+				166B1E57BFAAB8B99205FE93 /* Pods_TurnUp.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AF50105822758DA0007F91B1 /* Views */ = {
@@ -195,6 +186,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EFA474F53AE4B1F49A22DDF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE4C2048471669CF6A9B89D0 /* Pods-TurnUp.debug.xcconfig */,
+				4E9A9849AAC6A88F067E206D /* Pods-TurnUp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,11 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48AC74D520A66C2C00AA1788 /* Build configuration list for PBXNativeTarget "TurnUp" */;
 			buildPhases = (
-				CEB9431455C293FFAFA59FB6 /* [CP] Check Pods Manifest.lock */,
+				FAF9D1897E264E15EC92600A /* [CP] Check Pods Manifest.lock */,
 				48AC74BF20A66C2A00AA1788 /* Sources */,
 				48AC74C020A66C2A00AA1788 /* Frameworks */,
 				48AC74C120A66C2A00AA1788 /* Resources */,
-				DB8BF612B22951ED6C0E794A /* [CP] Embed Pods Frameworks */,
+				109A63A64BB20C16C3388894 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,60 +268,64 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CEB9431455C293FFAFA59FB6 /* [CP] Check Pods Manifest.lock */ = {
+		109A63A64BB20C16C3388894 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurnUp/Pods-TurnUp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurnUp/Pods-TurnUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAF9D1897E264E15EC92600A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RWRC-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TurnUp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB8BF612B22951ED6C0E794A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RWRC/Pods-RWRC-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RWRC/Pods-RWRC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -482,7 +486,7 @@
 		};
 		48AC74D620A66C2C00AA1788 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 138B8A2C43BFE3C4675D8981 /* Pods-RWRC.debug.xcconfig */;
+			baseConfigurationReference = AE4C2048471669CF6A9B89D0 /* Pods-TurnUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -502,7 +506,7 @@
 		};
 		48AC74D720A66C2C00AA1788 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */;
+			baseConfigurationReference = 4E9A9849AAC6A88F067E206D /* Pods-TurnUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
