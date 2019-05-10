@@ -1,4 +1,4 @@
-/// Copyright (c) 2018 Razeware LLC
+/// Copyright (c) 2018 Jack Van Boening LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -70,19 +70,22 @@ struct Message: MessageType {
   init?(document: QueryDocumentSnapshot) {
     let data = document.data()
     
-    guard let sentDate = data["created"] as? Date else {
+    guard let sentTimestamp = data["created"] as? Timestamp else {
+      //print("Error")
       return nil
     }
     guard let senderID = data["senderID"] as? String else {
+      //print("Error")
       return nil
     }
     guard let senderName = data["senderName"] as? String else {
+      print("Error")
       return nil
     }
     
     id = document.documentID
     
-    self.sentDate = sentDate
+    self.sentDate = sentTimestamp.dateValue()
     sender = Sender(id: senderID, displayName: senderName)
     
     if let content = data["content"] as? String {
@@ -129,3 +132,4 @@ extension Message: Comparable {
   }
   
 }
+

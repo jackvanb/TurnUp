@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tu-logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="5Z4-I6-yXx">
-                                <rect key="frame" x="19" y="287" width="337" height="93"/>
+                                <rect key="frame" x="20" y="40" width="335" height="587"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.9882352941176471" green="0.98039215686274506" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="5Z4-I6-yXx" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="267" id="4Gy-4R-K6F"/>
+                            <constraint firstItem="5Z4-I6-yXx" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="20" id="4Gy-4R-K6F"/>
                             <constraint firstItem="5Z4-I6-yXx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HaA-V4-HJT"/>
-                            <constraint firstItem="5Z4-I6-yXx" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="19" id="Lti-8o-F88"/>
+                            <constraint firstItem="5Z4-I6-yXx" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" id="Lti-8o-F88"/>
                             <constraint firstItem="5Z4-I6-yXx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZWx-rM-BCr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>

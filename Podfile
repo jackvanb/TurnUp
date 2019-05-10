@@ -1,9 +1,9 @@
-platform :ios, "11.0"
+platform :ios, "12.2"
 use_frameworks!
 inhibit_all_warnings!
 
-target 'RWRC' do
-  pod 'MessageKit'
+target 'TurnUp' do
+  pod 'MessageKit', '0.13.1'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'

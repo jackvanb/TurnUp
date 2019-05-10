@@ -1,4 +1,4 @@
-/// Copyright (c) 2018 Razeware LLC
+/// Copyright (c) 2018 Jack Van Boening LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class EventsViewController: UITableViewController {
   
@@ -40,15 +41,19 @@ class EventsViewController: UITableViewController {
   }()
   
   private let eventCellIdentifier = "eventCell"
+  private let eventCellHeight = 300
+  private let eventCellPadding = 20
   private var currentEventAlertController: UIAlertController?
   
   private let db = Firestore.firestore()
+  private let storage = Storage.storage()
   
   private var eventReference: CollectionReference {
     return db.collection("events")
   }
-  
+    
   private var events = [Event]()
+  private var eventImages = [Int : UIImage]()
   private var eventListener: ListenerRegistration?
   
   private let currentUser: User
@@ -70,9 +75,10 @@ class EventsViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    clearsSelectionOnViewWillAppear = true
-    tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: eventCellIdentifier)
+  
+   clearsSelectionOnViewWillAppear = true
+    tableView.register(UINib(nibName: "EventTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: eventCellIdentifier)
+    tableView.separatorStyle = .none
     
     toolbarItems = [
       UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -115,6 +121,24 @@ class EventsViewController: UITableViewController {
     ac.preferredAction?.isEnabled = field.hasText
   }
   
+  @objc func buttonClicked(sender: UIButton) {
+    let button = sender
+    let row = sender.tag
+    
+    guard let eventID = events[row].id else {
+      return
+    }
+    
+    // Update eventCount
+    if !button.isSelected {
+      updateGoingList(eventID: eventID, isGoing: true)
+    }
+    else {
+      updateGoingList(eventID: eventID, isGoing: false)
+    }
+    
+  }
+  
   // MARK: - Helpers
     
   private func addEventToTable(_ event: Event) {
@@ -137,7 +161,9 @@ class EventsViewController: UITableViewController {
     }
     
     events[index] = event
-    tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    UIView.performWithoutAnimation {
+      tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+    }
   }
   
   private func removeEventFromTable(_ event: Event) {
@@ -166,6 +192,64 @@ class EventsViewController: UITableViewController {
     }
   }
   
+  private func updateGoingList(eventID: String, isGoing: Bool) -> Void {
+    
+    let eventRef = eventReference.document(eventID)
+    
+    db.runTransaction({ (transaction, errorPointer) -> Any? in
+      let eventDocument: DocumentSnapshot
+      do {
+        try eventDocument = transaction.getDocument(eventRef)
+      } catch let fetchError as NSError {
+        errorPointer?.pointee = fetchError
+        return nil
+      }
+      
+      guard let oldCount = eventDocument.data()?["count"] as? Int else {
+        let error = NSError(
+          domain: "AppErrorDomain",
+          code: -1,
+          userInfo: [
+            NSLocalizedDescriptionKey: "Unable to retrieve count from snapshot \(eventDocument)"
+          ]
+        )
+        errorPointer?.pointee = error
+        return nil
+      }
+      
+      if (isGoing) {
+        let newCount = oldCount + 1
+        
+        transaction.updateData(["count": newCount], forDocument: eventRef)
+        transaction.updateData(["goingList": FieldValue.arrayUnion([self.currentUser.uid])],
+                               forDocument: eventRef)
+        return newCount
+      }
+      else {
+        let newCount = oldCount - 1
+        
+        guard newCount >= 0 else {
+          let error = NSError(
+            domain: "AppErrorDomain",
+            code: -2,
+            userInfo: [NSLocalizedDescriptionKey: "Count \(newCount) is negative"]
+          )
+          errorPointer?.pointee = error
+          return nil
+        }
+        
+        transaction.updateData(["count": newCount], forDocument: eventRef)
+        transaction.updateData(["goingList": FieldValue.arrayRemove([self.currentUser.uid])],
+                               forDocument: eventRef)
+        return newCount
+      }
+    }) { (object, error) in
+      if let error = error {
+        print("Error updating count: \(error)")
+      }
+    }
+  }
+  
 }
 
 // MARK: - TableViewDelegate
@@ -181,17 +265,64 @@ extension EventsViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 55
+    return CGFloat(eventCellHeight + eventCellPadding)
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath)
     
-    cell.accessoryType = .disclosureIndicator
-    cell.textLabel?.text = events[indexPath.row].name
-    cell.detailTextLabel?.text = events[indexPath.row].organization
+    let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
     
+    // Download Event Image
+    if eventImages.keys.contains(indexPath.row) {
+      cell.eventImage.image = eventImages[indexPath.row]
+    }
+    else {
+      if events[indexPath.row].downloadURL != nil {
+        let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
+        let megaByte = Int64(1 * 1024 * 1024)
+
+        ref.getData(maxSize: megaByte) { data, error in
+          guard let imageData = data else {
+            // Error
+            return
+          }
+          cell.eventImage.image = UIImage(data: imageData)
+          // Add to dict for future use
+          self.eventImages[indexPath.row] = cell.eventImage.image!
+        }
+      }
+    }
     
+    // Fill Image View
+    cell.eventImage.contentMode = .scaleAspectFill
+    
+    // Event Button State
+    if let going = events[indexPath.row].goingList?.contains(self.currentUser.uid) {
+      cell.eventButton.isSelected = going
+    }
+    else {
+      cell.eventButton.isSelected = false
+    }
+    
+    // Background Color
+    cell.eventButton.setBackgroundColor(color: UIColor.clear, forState: UIControl.State.normal)
+    cell.eventButton.setBackgroundColor(color: UIColor.secondary, forState: UIControl.State.selected)
+
+    
+    // Evvent Button Target
+    cell.eventButton.tag = indexPath.row
+    cell.eventButton.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
+    
+    // Clear Background
+    cell.backgroundColor = UIColor.clear
+    
+    // Load Data
+    cell.eventTitle?.text = events[indexPath.row].name
+    cell.eventOrg?.text = events[indexPath.row].organization
+    cell.eventDate?.text = events[indexPath.row].date
+    cell.eventAddress?.text = events[indexPath.row].address
+    cell.eventCount?.text = String(events[indexPath.row].count)
+
     return cell
   }
   
