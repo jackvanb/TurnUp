@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DEF2AC4F1D2F23CF4DC285CCA4266AAF"
+               BuildableName = "Pods_TurnUp.framework"
+               BlueprintName = "Pods-TurnUp"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "48AC74C220A66C2A00AA1788"
                BuildableName = "TurnUp.app"
                BlueprintName = "TurnUp"
