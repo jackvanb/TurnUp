@@ -129,92 +129,12 @@ class EventsViewController: UITableViewController {
       return
     }
     
+    // Update eventCount
     if !button.isSelected {
-      button.backgroundColor = UIColor.secondary
-      button.isSelected = true
-      
-      // Update eventCount
-      let eventRef = eventReference.document(eventID)
-      db.runTransaction({ (transaction, errorPointer) -> Any? in
-        let eventDocument: DocumentSnapshot
-        do {
-          try eventDocument = transaction.getDocument(eventRef)
-        } catch let fetchError as NSError {
-          errorPointer?.pointee = fetchError
-          return nil
-        }
-        
-        guard let oldCount = eventDocument.data()?["count"] as? Int else {
-          let error = NSError(
-            domain: "AppErrorDomain",
-            code: -1,
-            userInfo: [
-              NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(eventDocument)"
-            ]
-          )
-          errorPointer?.pointee = error
-          return nil
-        }
-        
-        let newCount = oldCount + 1
-        
-        transaction.updateData(["count": newCount], forDocument: eventRef)
-        return newCount
-      }) { (object, error) in
-        if let error = error {
-          print("Error updating count: \(error)")
-        } else {
-          print("Count increased to \(object!)")
-        }
-      }
+      updateGoingList(eventID: eventID, isGoing: true)
     }
     else {
-      button.backgroundColor = UIColor.clear
-      button.isSelected = false
-      
-      // Update eventCount
-      let eventRef = eventReference.document(eventID)
-      db.runTransaction({ (transaction, errorPointer) -> Any? in
-        let eventDocument: DocumentSnapshot
-        do {
-          try eventDocument = transaction.getDocument(eventRef)
-        } catch let fetchError as NSError {
-          errorPointer?.pointee = fetchError
-          return nil
-        }
-        
-        guard let oldCount = eventDocument.data()?["count"] as? Int else {
-          let error = NSError(
-            domain: "AppErrorDomain",
-            code: -1,
-            userInfo: [
-              NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(eventDocument)"
-            ]
-          )
-          errorPointer?.pointee = error
-          return nil
-        }
-
-        let newCount = oldCount - 1
-        guard newCount >= 0 else {
-          let error = NSError(
-            domain: "AppErrorDomain",
-            code: -2,
-            userInfo: [NSLocalizedDescriptionKey: "Count \(newCount) is negative"]
-          )
-          errorPointer?.pointee = error
-          return nil
-        }
-        
-        transaction.updateData(["count": newCount], forDocument: eventRef)
-        return newCount
-      }) { (object, error) in
-        if let error = error {
-          print("Error updating count: \(error)")
-        } else {
-          print("Count increased to \(object!)")
-        }
-      }
+      updateGoingList(eventID: eventID, isGoing: false)
     }
     
   }
@@ -272,6 +192,64 @@ class EventsViewController: UITableViewController {
     }
   }
   
+  private func updateGoingList(eventID: String, isGoing: Bool) -> Void {
+    
+    let eventRef = eventReference.document(eventID)
+    
+    db.runTransaction({ (transaction, errorPointer) -> Any? in
+      let eventDocument: DocumentSnapshot
+      do {
+        try eventDocument = transaction.getDocument(eventRef)
+      } catch let fetchError as NSError {
+        errorPointer?.pointee = fetchError
+        return nil
+      }
+      
+      guard let oldCount = eventDocument.data()?["count"] as? Int else {
+        let error = NSError(
+          domain: "AppErrorDomain",
+          code: -1,
+          userInfo: [
+            NSLocalizedDescriptionKey: "Unable to retrieve count from snapshot \(eventDocument)"
+          ]
+        )
+        errorPointer?.pointee = error
+        return nil
+      }
+      
+      if (isGoing) {
+        let newCount = oldCount + 1
+        
+        transaction.updateData(["count": newCount], forDocument: eventRef)
+        transaction.updateData(["goingList": FieldValue.arrayUnion([self.currentUser.uid])],
+                               forDocument: eventRef)
+        return newCount
+      }
+      else {
+        let newCount = oldCount - 1
+        
+        guard newCount >= 0 else {
+          let error = NSError(
+            domain: "AppErrorDomain",
+            code: -2,
+            userInfo: [NSLocalizedDescriptionKey: "Count \(newCount) is negative"]
+          )
+          errorPointer?.pointee = error
+          return nil
+        }
+        
+        transaction.updateData(["count": newCount], forDocument: eventRef)
+        transaction.updateData(["goingList": FieldValue.arrayRemove([self.currentUser.uid])],
+                               forDocument: eventRef)
+        return newCount
+      }
+    }) { (object, error) in
+      if let error = error {
+        print("Error updating count: \(error)")
+      }
+    }
+  }
+  
 }
 
 // MARK: - TableViewDelegate
@@ -317,6 +295,19 @@ extension EventsViewController {
     
     // Fill Image View
     cell.eventImage.contentMode = .scaleAspectFill
+    
+    // Event Button State
+    if let going = events[indexPath.row].goingList?.contains(self.currentUser.uid) {
+      cell.eventButton.isSelected = going
+    }
+    else {
+      cell.eventButton.isSelected = false
+    }
+    
+    // Background Color
+    cell.eventButton.setBackgroundColor(color: UIColor.clear, forState: UIControl.State.normal)
+    cell.eventButton.setBackgroundColor(color: UIColor.secondary, forState: UIControl.State.selected)
+
     
     // Evvent Button Target
     cell.eventButton.tag = indexPath.row
