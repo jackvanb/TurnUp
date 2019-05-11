@@ -25,7 +25,7 @@ class TurnUpTests: XCTestCase {
   }
 
   func testEventInit() {
-    let mockEvent = Event.init(name: "Party", organization: "PKP", date: "4/20/19", address: "613 Gayley", count: 69)
+    let mockEvent = Event.init(name: "Party", organization: "PKP", date: Date(), address: "613 Gayley", count: 69)
     
     XCTAssertNotNil(mockEvent)
     
