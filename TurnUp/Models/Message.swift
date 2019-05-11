@@ -71,15 +71,12 @@ struct Message: MessageType {
     let data = document.data()
     
     guard let sentTimestamp = data["created"] as? Timestamp else {
-      //print("Error")
       return nil
     }
     guard let senderID = data["senderID"] as? String else {
-      //print("Error")
       return nil
     }
     guard let senderName = data["senderName"] as? String else {
-      print("Error")
       return nil
     }
     

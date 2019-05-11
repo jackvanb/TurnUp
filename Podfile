@@ -8,6 +8,11 @@ target 'TurnUp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  
+target 'TurnUpTests' do
+    inherit! :search_paths
+  end
+  
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           if target.name == 'MessageKit'
