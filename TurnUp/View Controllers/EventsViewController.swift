@@ -319,7 +319,7 @@ extension EventsViewController {
     // Load Data
     cell.eventTitle?.text = events[indexPath.row].name
     cell.eventOrg?.text = events[indexPath.row].organization
-    cell.eventDate?.text = events[indexPath.row].date
+    cell.eventDate?.text = events[indexPath.row].date.asString()
     cell.eventAddress?.text = events[indexPath.row].address
     cell.eventCount?.text = String(events[indexPath.row].count)
 

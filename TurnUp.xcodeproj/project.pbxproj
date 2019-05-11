@@ -33,6 +33,7 @@
 		AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */; };
 		AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7C71FB2274D68800F7820A /* Main.storyboard */; };
 		AF8933E6227423430001E760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8933E5227423430001E760 /* GoogleService-Info.plist */; };
+		AF9F4F312286A0C4004701C9 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F4F302286A0C4004701C9 /* Date+Additions.swift */; };
 		AFE322F4228688F40043F4AD /* TurnUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE322F3228688F40043F4AD /* TurnUpTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		AF7C71FB2274D68800F7820A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF8933E5227423430001E760 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF9F4F302286A0C4004701C9 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		AFE322F1228688F40043F4AD /* TurnUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE322F3228688F40043F4AD /* TurnUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnUpTests.swift; sourceTree = "<group>"; };
 		AFE322F5228688F40043F4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				481A352B20A8E6DC008CD16B /* UIImage+Additions.swift */,
 				4859775D20A69CD500429CB3 /* UIView+Additions.swift */,
 				AF4AFF63228237E10040C33C /* UIButton+Additions.swift */,
+				AF9F4F302286A0C4004701C9 /* Date+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				4859775520A68BF500429CB3 /* AppController.swift in Sources */,
 				481A352E20A8E956008CD16B /* UICollectionView+Additions.swift in Sources */,
 				4859775020A68AF800429CB3 /* LoginViewController.swift in Sources */,
+				AF9F4F312286A0C4004701C9 /* Date+Additions.swift in Sources */,
 				4859775E20A69CD500429CB3 /* UIView+Additions.swift in Sources */,
 				48AC74C720A66C2A00AA1788 /* AppDelegate.swift in Sources */,
 				4859776420A7A1BD00429CB3 /* DatabaseRepresentation.swift in Sources */,

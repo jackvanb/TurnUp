@@ -33,14 +33,14 @@ struct Event {
   let id: String?
   let name: String
   let organization: String
-  let date: String
+  let date: Date
   let address: String
   let count: Int
   
   var goingList: [String]? = []
   var downloadURL: URL? = nil
   
-  init(name: String, organization: String, date: String, address: String, count: Int) {
+  init(name: String, organization: String, date: Date, address: String, count: Int) {
     id = nil
     self.name = name
     self.organization = organization
@@ -60,7 +60,7 @@ struct Event {
       return nil
     }
     
-    guard let date = data["date"] as? String else {
+    guard let timestamp = data["date"] as? Timestamp else {
       return nil
     }
     
@@ -83,7 +83,7 @@ struct Event {
     id = document.documentID
     self.name = name
     self.organization = organization
-    self.date = date
+    self.date = timestamp.dateValue()
     self.address = address
     self.count = count
   }
@@ -120,7 +120,7 @@ extension Event: Comparable {
   }
   
   static func < (lhs: Event, rhs: Event) -> Bool {
-    return lhs.name < rhs.name
+    return lhs.date > rhs.date
   }
 
 }
