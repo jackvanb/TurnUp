@@ -62,6 +62,9 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseUI/Storage (7.0.0):
+    - Firebase/Storage (~> 6.0)
+    - SDWebImage (~> 4.0)
   - GoogleAppMeasurement (6.0.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -111,6 +114,9 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
 
 DEPENDENCIES:
   - BTNavigationDropdownMenu
@@ -118,6 +124,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
+  - FirebaseUI/Storage
   - MessageKit (= 0.13.1)
 
 SPEC REPOS:
@@ -132,6 +139,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseStorage
+    - FirebaseUI
     - GoogleAppMeasurement
     - GoogleUtilities
     - "gRPC-C++"
@@ -141,6 +149,7 @@ SPEC REPOS:
     - MessageKit
     - nanopb
     - Protobuf
+    - SDWebImage
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -153,6 +162,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 0537b2a960a4819fae2834e688e5daeb571c81d6
   FirebaseInstanceID: 0e0348a3c00a734fa376a070f5ad4533ad975cb5
   FirebaseStorage: ff1e8f1f6cf1557a8694b0ef39d3e72cb60c42ac
+  FirebaseUI: aa1ffe07fad45c2e2271a8bfa429549ad260e77d
   GoogleAppMeasurement: 7f028ea162b72c8f326daec74afc95d94f7a47d6
   GoogleUtilities: f1faafc033ea203adf1783ce00af455bb99d0e5b
   "gRPC-C++": 98be881723177d8c4faf5fdffacb582c7b4971a2
@@ -162,7 +172,8 @@ SPEC CHECKSUMS:
   MessageKit: fc74d71d9b05385138d47b3a4b7beef5c687daf1
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: 03deef68ebee60aabe8d18e3cce34f364ec9fca8
+PODFILE CHECKSUM: 222485f23d7de790756032d0e33125cb9a164675
 
 COCOAPODS: 1.6.1

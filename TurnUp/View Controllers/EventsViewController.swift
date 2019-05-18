@@ -30,6 +30,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseUI
 import BTNavigationDropdownMenu
 
 class EventsViewController: UITableViewController {
@@ -285,29 +286,16 @@ extension EventsViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
-    cell.tag = indexPath.row
     
     // Download Event Image
-    cell.eventImage.image = nil
     if events[indexPath.row].downloadURL != nil {
       let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
-      let megaByte = Int64(1 * 1024 * 1024)
-
-      ref.getData(maxSize: megaByte) { data, error in
-        guard let imageData = data else {
-          // Error
-          return
-        }
-        if cell.tag == indexPath.row {
-          DispatchQueue.main.async {
-            cell.eventImage.image = UIImage(data: imageData)
-          }
-        }
-      }
+      cell.eventImage.sd_setImage(with: ref, placeholderImage: defaultImage)
     }
     else {
       cell.eventImage.image = defaultImage
     }
+    
     
     // Fill Image View
     cell.eventImage.contentMode = .scaleAspectFill
