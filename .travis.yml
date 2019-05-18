@@ -1,8 +1,4 @@
 language: objective-c
-cache:
-  - bundler
-  - cocoapods
-
 osx_image: xcode10.2
 xcode_workspace: TurnUp.xcworkspace
 xcode_scheme: TurnUp [Development]
