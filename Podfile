@@ -8,6 +8,7 @@ target 'TurnUp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'BTNavigationDropdownMenu'
   
 target 'TurnUpTests' do
     inherit! :search_paths

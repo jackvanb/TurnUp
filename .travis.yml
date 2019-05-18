@@ -4,7 +4,7 @@ cache:
   - cocoapods
 
 osx_image: xcode10.2
-xcode_workspace: TurnUp.xcworkspace
+xcode_project: TurnUp.xcodeproj
 xcode_scheme: TurnUp [Development]
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
 
