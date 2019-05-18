@@ -30,6 +30,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import BTNavigationDropdownMenu
 
 class EventsViewController: UITableViewController {
   
@@ -53,8 +54,8 @@ class EventsViewController: UITableViewController {
   }
     
   private var events = [Event]()
-  private var eventImages = [Int : UIImage]()
   private var eventListener: ListenerRegistration?
+  private let defaultImage: UIImage = UIImage(named: "tu-logo")!
   
   private let currentUser: User
   
@@ -67,6 +68,7 @@ class EventsViewController: UITableViewController {
     super.init(style: .grouped)
     
     title = "Events"
+
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -75,7 +77,19 @@ class EventsViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+    
+    // Drop Down Menu
+    let colleges = ["UCLA", "USC", "LMU", "Pepperdine"]
+    let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.index(0), items: colleges)
+
+    menuView.didSelectItemAtIndexHandler = { (indexPath: Int) -> Void in
+     //TODO
+    }
+    
+    menuView.arrowTintColor = UIColor.primary
+    let dropDown = UIBarButtonItem(customView: menuView)
+    navigationItem.rightBarButtonItem = dropDown
+
    clearsSelectionOnViewWillAppear = true
     tableView.register(UINib(nibName: "EventTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: eventCellIdentifier)
     tableView.separatorStyle = .none
@@ -271,26 +285,28 @@ extension EventsViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
+    cell.tag = indexPath.row
     
     // Download Event Image
-    if eventImages.keys.contains(indexPath.row) {
-      cell.eventImage.image = eventImages[indexPath.row]
-    }
-    else {
-      if events[indexPath.row].downloadURL != nil {
-        let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
-        let megaByte = Int64(1 * 1024 * 1024)
+    cell.eventImage.image = nil
+    if events[indexPath.row].downloadURL != nil {
+      let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
+      let megaByte = Int64(1 * 1024 * 1024)
 
-        ref.getData(maxSize: megaByte) { data, error in
-          guard let imageData = data else {
-            // Error
-            return
+      ref.getData(maxSize: megaByte) { data, error in
+        guard let imageData = data else {
+          // Error
+          return
+        }
+        if cell.tag == indexPath.row {
+          DispatchQueue.main.async {
+            cell.eventImage.image = UIImage(data: imageData)
           }
-          cell.eventImage.image = UIImage(data: imageData)
-          // Add to dict for future use
-          self.eventImages[indexPath.row] = cell.eventImage.image!
         }
       }
+    }
+    else {
+      cell.eventImage.image = defaultImage
     }
     
     // Fill Image View
@@ -322,7 +338,7 @@ extension EventsViewController {
     cell.eventDate?.text = events[indexPath.row].date.asString()
     cell.eventAddress?.text = events[indexPath.row].address
     cell.eventCount?.text = String(events[indexPath.row].count)
-
+    
     return cell
   }
   
