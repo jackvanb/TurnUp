@@ -39,6 +39,7 @@ class EventsViewController: UITableViewController {
     let label = UILabel()
     label.textAlignment = .center
     label.font = UIFont.systemFont(ofSize: 15)
+    label.textColor = UIColor.primary
     return label
   }()
   
@@ -50,13 +51,15 @@ class EventsViewController: UITableViewController {
   private let db = Firestore.firestore()
   private let storage = Storage.storage()
   
-  private var eventReference: CollectionReference {
-    return db.collection("events")
-  }
-    
+  private var eventReference: CollectionReference
+
   private var events = [Event]()
   private var eventListener: ListenerRegistration?
   private let defaultImage: UIImage = UIImage(named: "tu-logo")!
+  
+  private let colleges = ["UCLA", "USC"]
+  private var currentCollege : String
+
   
   private let currentUser: User
   
@@ -66,6 +69,8 @@ class EventsViewController: UITableViewController {
   
   init(currentUser: User) {
     self.currentUser = currentUser
+    self.currentCollege = colleges[0]
+    self.eventReference = db.collection(currentCollege)
     super.init(style: .grouped)
     
     title = "Events"
@@ -79,19 +84,25 @@ class EventsViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationController?.navigationBar.barTintColor = UIColor.offWhite
+    navigationController?.toolbar.barTintColor = UIColor.offWhite
+    
     // Drop Down Menu
-    let colleges = ["UCLA", "USC", "LMU", "Pepperdine"]
     let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.index(0), items: colleges)
 
     menuView.didSelectItemAtIndexHandler = { (indexPath: Int) -> Void in
-     //TODO
+      self.currentCollege = self.colleges[indexPath]
+      self.updateEventListener(self.colleges[indexPath])
     }
     
     menuView.arrowTintColor = UIColor.primary
+    menuView.cellBackgroundColor = UIColor.offWhite
+    menuView.cellTextLabelColor = UIColor.primary
+    menuView.menuTitleColor = UIColor.primary
+    menuView.cellSelectionColor = UIColor.secondary
     let dropDown = UIBarButtonItem(customView: menuView)
     navigationItem.rightBarButtonItem = dropDown
 
-   clearsSelectionOnViewWillAppear = true
     tableView.register(UINib(nibName: "EventTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: eventCellIdentifier)
     tableView.separatorStyle = .none
     
@@ -155,7 +166,24 @@ class EventsViewController: UITableViewController {
   }
   
   // MARK: - Helpers
+  
+  private func updateEventListener(_ college: String) {
+    eventReference = db.collection(college)
+    events.removeAll()
+    tableView.reloadData()
     
+    eventListener = eventReference.addSnapshotListener { querySnapshot, error in
+      guard let snapshot = querySnapshot else {
+        print("Error listening for event updates: \(error?.localizedDescription ?? "No error")")
+        return
+      }
+      
+      snapshot.documentChanges.forEach { change in
+        self.handleDocumentChange(change)
+      }
+    }
+  }
+  
   private func addEventToTable(_ event: Event) {
     guard !events.contains(event) else {
       return
@@ -332,7 +360,8 @@ extension EventsViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let event = events[indexPath.row]
-    let vc = ChatViewController(user: currentUser, event: event)
+    let college = currentCollege
+    let vc = ChatViewController(user: currentUser, event: event, college: college)
     navigationController?.pushViewController(vc, animated: true)
   }
   

@@ -41,10 +41,12 @@ final class ChatViewController: MessagesViewController {
   
   private let user: User
   private let event: Event
+  private let college : String
   
-  init(user: User, event: Event) {
+  init(user: User, event: Event, college: String) {
     self.user = user
     self.event = event
+    self.college = college
     super.init(nibName: nil, bundle: nil)
     
     title = event.name
@@ -66,12 +68,13 @@ final class ChatViewController: MessagesViewController {
       return
     }
     
-    reference = db.collection(["events", id, "thread"].joined(separator: "/"))
+    reference = db.collection([college, id, "thread"].joined(separator: "/"))
     
     navigationItem.largeTitleDisplayMode = .never
     
     maintainPositionOnKeyboardFrameChanged = true
     messageInputBar.inputTextView.tintColor = .primary
+    messageInputBar.backgroundView.backgroundColor = .offWhite
     messageInputBar.sendButton.setTitleColor(.primary, for: .normal)
     
     messageInputBar.delegate = self

@@ -38,6 +38,10 @@ extension UIColor {
     return #colorLiteral(red: 0.3211782575, green: 0.9078884721, blue: 0.8047582507, alpha: 1)
   }
   
+  static var offWhite: UIColor {
+    return #colorLiteral(red: 0.9882352941, green: 0.9803921569, blue: 0.9764705882, alpha: 1)
+  }
+  
   static var incomingMessage: UIColor {
     return UIColor(red: 230 / 255, green: 230 / 255, blue: 230 / 255, alpha: 1)
   }
