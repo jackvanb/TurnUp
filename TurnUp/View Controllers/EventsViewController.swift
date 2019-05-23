@@ -324,7 +324,6 @@ extension EventsViewController {
       cell.eventImage.image = defaultImage
     }
     
-    
     // Fill Image View
     cell.eventImage.contentMode = .scaleAspectFill
     
@@ -344,9 +343,6 @@ extension EventsViewController {
     // Evvent Button Target
     cell.eventButton.tag = indexPath.row
     cell.eventButton.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
-    
-    // Clear Background
-    cell.backgroundColor = UIColor.clear
     
     // Load Data
     cell.eventTitle?.text = events[indexPath.row].name
