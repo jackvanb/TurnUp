@@ -32,6 +32,7 @@ final class AppSettings {
   
   private enum SettingKey: String {
     case displayName
+    case firstTimeOpened
   }
   
   static var displayName: String! {
@@ -41,6 +42,22 @@ final class AppSettings {
     set {
       let defaults = UserDefaults.standard
       let key = SettingKey.displayName.rawValue
+      
+      if let name = newValue {
+        defaults.set(name, forKey: key)
+      } else {
+        defaults.removeObject(forKey: key)
+      }
+    }
+  }
+  
+  static var firstTimeOpened : Bool! {
+    get {
+      return UserDefaults.standard.bool(forKey: SettingKey.firstTimeOpened.rawValue)
+    }
+    set {
+      let defaults = UserDefaults.standard
+      let key = SettingKey.firstTimeOpened.rawValue
       
       if let name = newValue {
         defaults.set(name, forKey: key)

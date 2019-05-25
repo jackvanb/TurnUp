@@ -70,6 +70,17 @@ final class AppController {
   }
   
   private func handleAppState() {
+    
+    if !AppSettings.firstTimeOpened {
+      do {
+        try Auth.auth().signOut()
+      }
+      catch {
+         fatalError("Cannot sign out usser.")
+        }
+      AppSettings.firstTimeOpened = true
+    }
+    
     if let user = Auth.auth().currentUser {
       let vc = EventsViewController(currentUser: user)
       rootViewController = NavigationController(vc)
