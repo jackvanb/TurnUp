@@ -16,7 +16,7 @@ class EventTableViewCell: UITableViewCell {
   @IBOutlet weak var eventOrg: UILabel!
   @IBOutlet weak var eventDate: UILabel!
   @IBOutlet weak var eventImage: UIImageView!
-  @IBOutlet weak var eventButton: UIButton!
+  @IBOutlet weak var eventButton: EventTableButton!
   @IBOutlet weak var eventAddress: UILabel!
   @IBOutlet weak var eventCount: UILabel!
     

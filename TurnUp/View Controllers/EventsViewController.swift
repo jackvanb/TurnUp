@@ -147,11 +147,10 @@ class EventsViewController: UITableViewController {
     ac.preferredAction?.isEnabled = field.hasText
   }
   
-  @objc func buttonClicked(sender: UIButton) {
+  @objc func buttonClicked(sender: EventTableButton) {
     let button = sender
-    let row = sender.tag
-    
-    guard let eventID = events[row].id else {
+
+    guard let eventID = button.id else {
       return
     }
     
@@ -336,12 +335,15 @@ extension EventsViewController {
     }
     
     // Background Color
+    cell.backgroundColor = UIColor.clear
     cell.eventButton.setBackgroundColor(color: UIColor.clear, forState: UIControl.State.normal)
     cell.eventButton.setBackgroundColor(color: UIColor.secondary, forState: UIControl.State.selected)
 
     
     // Evvent Button Target
-    cell.eventButton.tag = indexPath.row
+    if let eventID = events[indexPath.row].id {
+      cell.eventButton.id = eventID
+    }
     cell.eventButton.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
     
     // Load Data

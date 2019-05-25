@@ -26,6 +26,7 @@
 		48AC74D120A66C2C00AA1788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CF20A66C2C00AA1788 /* LaunchScreen.storyboard */; };
 		54829D0D6BCE17D1A3B2D48C /* Pods_TurnUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EEEF7CD5D59BF2F4872D2A /* Pods_TurnUpTests.framework */; };
 		AF020F0522757D16009756C0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF020F0422757D16009756C0 /* LoginViewController.xib */; };
+		AF111FC92298C50A000ABDA7 /* EventTableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF111FC82298C50A000ABDA7 /* EventTableButton.swift */; };
 		AF35BDA8227CCD73001D28F9 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF35BDA6227CCD73001D28F9 /* EventTableViewCell.swift */; };
 		AF35BDA9227CCD73001D28F9 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */; };
 		AF35BDAB227CD8A0001D28F9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF35BDAA227CD8A0001D28F9 /* CardView.swift */; };
@@ -72,6 +73,7 @@
 		65EEEF7CD5D59BF2F4872D2A /* Pods_TurnUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurnUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE4C2048471669CF6A9B89D0 /* Pods-TurnUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurnUp.debug.xcconfig"; path = "Target Support Files/Pods-TurnUp/Pods-TurnUp.debug.xcconfig"; sourceTree = "<group>"; };
 		AF020F0422757D16009756C0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		AF111FC82298C50A000ABDA7 /* EventTableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableButton.swift; sourceTree = "<group>"; };
 		AF35BDA6227CCD73001D28F9 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		AF35BDAA227CD8A0001D28F9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				AF35BDA6227CCD73001D28F9 /* EventTableViewCell.swift */,
 				AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */,
 				AF35BDAA227CD8A0001D28F9 /* CardView.swift */,
+				AF111FC82298C50A000ABDA7 /* EventTableButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				4859775320A68B1C00429CB3 /* EventsViewController.swift in Sources */,
 				4859775720A68C6F00429CB3 /* NavigationController.swift in Sources */,
 				4859775520A68BF500429CB3 /* AppController.swift in Sources */,
+				AF111FC92298C50A000ABDA7 /* EventTableButton.swift in Sources */,
 				481A352E20A8E956008CD16B /* UICollectionView+Additions.swift in Sources */,
 				4859775020A68AF800429CB3 /* LoginViewController.swift in Sources */,
 				AF9F4F312286A0C4004701C9 /* Date+Additions.swift in Sources */,

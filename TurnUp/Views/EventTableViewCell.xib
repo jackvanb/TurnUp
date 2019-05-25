@@ -48,7 +48,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRz-Uv-dKW">
+                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRz-Uv-dKW" customClass="EventTableButton" customModule="TurnUp" customModuleProvider="target">
                                 <rect key="frame" x="45" y="251" width="210" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -98,7 +98,7 @@
                 <outlet property="cardView" destination="TCj-GE-CeR" id="JYa-Df-Yck"/>
                 <outlet property="contentView" destination="H2p-sc-9uM" id="B30-YG-4mk"/>
                 <outlet property="eventAddress" destination="SYU-gN-v9S" id="kyd-Jj-Lly"/>
-                <outlet property="eventButton" destination="VRz-Uv-dKW" id="tkP-n6-LHO"/>
+                <outlet property="eventButton" destination="VRz-Uv-dKW" id="L5T-hn-ngr"/>
                 <outlet property="eventCount" destination="03p-BG-oML" id="6mR-fh-rZF"/>
                 <outlet property="eventDate" destination="mx9-Sr-Lgr" id="X17-Ro-XXx"/>
                 <outlet property="eventImage" destination="0hb-TC-v4R" id="LZX-La-p67"/>
