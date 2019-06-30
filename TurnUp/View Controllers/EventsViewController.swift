@@ -314,6 +314,8 @@ extension EventsViewController {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: eventCellIdentifier, for: indexPath) as! EventTableViewCell
     
+    cell.selectionStyle = .gray
+
     // Download Event Image
     if events[indexPath.row].downloadURL != nil {
       let ref = storage.reference(forURL: events[indexPath.row].downloadURL!.absoluteString)
@@ -325,6 +327,7 @@ extension EventsViewController {
     
     // Fill Image View
     cell.eventImage.contentMode = .scaleAspectFill
+    cell.eventImage.roundCorners(corners: [.topLeft, .topRight], radius: 5)
     
     // Event Button State
     if let going = events[indexPath.row].goingList?.contains(self.currentUser.uid) {

@@ -19,11 +19,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Used to send photos from the Camera.</string>
+	<key>NSMainStoryboardFile</key>
+	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to send a photo from your Camera Roll.</string>
 	<key>UILaunchStoryboardName</key>
@@ -45,7 +47,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSMainStoryboardFile</key>
-	<string>Main</string>
 </dict>
 </plist>
