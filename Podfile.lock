@@ -107,7 +107,6 @@ PODS:
   - gRPC-Core/Interface (1.19.0)
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
-  - MessageKit (0.13.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -125,7 +124,6 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseUI/Storage
-  - MessageKit (= 0.13.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -146,7 +144,6 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
-    - MessageKit
     - nanopb
     - Protobuf
     - SDWebImage
@@ -169,11 +166,10 @@ SPEC CHECKSUMS:
   gRPC-Core: bd9472c8daa2e414b9f8038ba667bf56ce0e02b8
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  MessageKit: fc74d71d9b05385138d47b3a4b7beef5c687daf1
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: 222485f23d7de790756032d0e33125cb9a164675
+PODFILE CHECKSUM: 37deb7484beb5b955ac4a97f0a9eea8f86d0699f
 
 COCOAPODS: 1.6.1

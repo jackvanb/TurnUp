@@ -7,4 +7,7 @@
    <FileRef
       location = "group:/Users/jvb/TurnUp/TurnUp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:TurnUp.xcodeproj">
+   </FileRef>
 </Workspace>
