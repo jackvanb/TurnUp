@@ -343,7 +343,7 @@ extension EventsViewController {
     cell.eventButton.setBackgroundColor(color: UIColor.secondary, forState: UIControl.State.selected)
 
     
-    // Evvent Button Target
+    // Event Button Target
     if let eventID = events[indexPath.row].id {
       cell.eventButton.id = eventID
     }
@@ -362,7 +362,7 @@ extension EventsViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let event = events[indexPath.row]
     let college = currentCollege
-    let vc = ChatViewController(user: currentUser, event: event, college: college)
+    let vc = ThreadViewController(user: currentUser, event: event, college: college)
     navigationController?.pushViewController(vc, animated: true)
   }
   

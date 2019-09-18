@@ -19,8 +19,6 @@
 		4859775E20A69CD500429CB3 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859775D20A69CD500429CB3 /* UIView+Additions.swift */; };
 		4859776020A7993F00429CB3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859775F20A7993F00429CB3 /* Event.swift */; };
 		4859776420A7A1BD00429CB3 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859776320A7A1BD00429CB3 /* DatabaseRepresentation.swift */; };
-		4859776620A7AD3800429CB3 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859776520A7AD3800429CB3 /* ChatViewController.swift */; };
-		4859776820A7D34400429CB3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859776720A7D34400429CB3 /* Message.swift */; };
 		48AC74C720A66C2A00AA1788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC74C620A66C2A00AA1788 /* AppDelegate.swift */; };
 		48AC74CE20A66C2C00AA1788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CD20A66C2C00AA1788 /* Assets.xcassets */; };
 		48AC74D120A66C2C00AA1788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AC74CF20A66C2C00AA1788 /* LaunchScreen.storyboard */; };
@@ -32,8 +30,15 @@
 		AF35BDAB227CD8A0001D28F9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF35BDAA227CD8A0001D28F9 /* CardView.swift */; };
 		AF4AFF64228237E20040C33C /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4AFF63228237E10040C33C /* UIButton+Additions.swift */; };
 		AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */; };
+		AF5313A722990A4800DE7D35 /* UIImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5313A622990A4800DE7D35 /* UIImageView+Additions.swift */; };
 		AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7C71FB2274D68800F7820A /* Main.storyboard */; };
 		AF9F4F312286A0C4004701C9 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F4F302286A0C4004701C9 /* Date+Additions.swift */; };
+		AFA986F12302656800572D5D /* ThreadVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA986F02302656800572D5D /* ThreadVoteButton.swift */; };
+		AFB8274A22C9DC700050EC20 /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8274922C9DC700050EC20 /* Thread.swift */; };
+		AFB8274C22C9DDAB0050EC20 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8274B22C9DDAB0050EC20 /* Sender.swift */; };
+		AFBA1E0A22C955EF00C328D8 /* ThreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBA1E0922C955EF00C328D8 /* ThreadTableViewCell.xib */; };
+		AFBA1E0C22C9572B00C328D8 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA1E0B22C9572B00C328D8 /* ThreadViewController.swift */; };
+		AFBA1E0E22C9579F00C328D8 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA1E0D22C9579F00C328D8 /* ThreadTableViewCell.swift */; };
 		AFC402272286CB0700305791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFC402262286CB0700305791 /* GoogleService-Info.plist */; };
 		AFE322F4228688F40043F4AD /* TurnUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE322F3228688F40043F4AD /* TurnUpTests.swift */; };
 /* End PBXBuildFile section */
@@ -62,8 +67,6 @@
 		4859775D20A69CD500429CB3 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		4859775F20A7993F00429CB3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		4859776320A7A1BD00429CB3 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
-		4859776520A7AD3800429CB3 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		4859776720A7D34400429CB3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		48AC74C320A66C2A00AA1788 /* TurnUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurnUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48AC74C620A66C2A00AA1788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48AC74CD20A66C2C00AA1788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,8 +82,15 @@
 		AF35BDAA227CD8A0001D28F9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AF4AFF63228237E10040C33C /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		AF50105B22758F29007F91B1 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
+		AF5313A622990A4800DE7D35 /* UIImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Additions.swift"; sourceTree = "<group>"; };
 		AF7C71FB2274D68800F7820A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF9F4F302286A0C4004701C9 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
+		AFA986F02302656800572D5D /* ThreadVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadVoteButton.swift; sourceTree = "<group>"; };
+		AFB8274922C9DC700050EC20 /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
+		AFB8274B22C9DDAB0050EC20 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		AFBA1E0922C955EF00C328D8 /* ThreadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreadTableViewCell.xib; sourceTree = "<group>"; };
+		AFBA1E0B22C9572B00C328D8 /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
+		AFBA1E0D22C9579F00C328D8 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
 		AFC402262286CB0700305791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFE322F1228688F40043F4AD /* TurnUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurnUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE322F3228688F40043F4AD /* TurnUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnUpTests.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				481A352D20A8E956008CD16B /* UICollectionView+Additions.swift */,
+				AF5313A622990A4800DE7D35 /* UIImageView+Additions.swift */,
 				4859775920A68CAC00429CB3 /* UIColor+Additions.swift */,
 				481A352B20A8E6DC008CD16B /* UIImage+Additions.swift */,
 				4859775D20A69CD500429CB3 /* UIView+Additions.swift */,
@@ -160,10 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				4859775220A68B1C00429CB3 /* EventsViewController.swift */,
-				4859776520A7AD3800429CB3 /* ChatViewController.swift */,
 				4859774E20A68AF800429CB3 /* LoginViewController.swift */,
 				AF020F0422757D16009756C0 /* LoginViewController.xib */,
 				4859775620A68C6F00429CB3 /* NavigationController.swift */,
+				AFBA1E0B22C9572B00C328D8 /* ThreadViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -173,7 +184,8 @@
 			children = (
 				4859775F20A7993F00429CB3 /* Event.swift */,
 				4859776320A7A1BD00429CB3 /* DatabaseRepresentation.swift */,
-				4859776720A7D34400429CB3 /* Message.swift */,
+				AFB8274922C9DC700050EC20 /* Thread.swift */,
+				AFB8274B22C9DDAB0050EC20 /* Sender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,6 +229,9 @@
 				AF35BDA7227CCD73001D28F9 /* EventTableViewCell.xib */,
 				AF35BDAA227CD8A0001D28F9 /* CardView.swift */,
 				AF111FC82298C50A000ABDA7 /* EventTableButton.swift */,
+				AFBA1E0922C955EF00C328D8 /* ThreadTableViewCell.xib */,
+				AFBA1E0D22C9579F00C328D8 /* ThreadTableViewCell.swift */,
+				AFA986F02302656800572D5D /* ThreadVoteButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBA1E0A22C955EF00C328D8 /* ThreadTableViewCell.xib in Resources */,
 				AF35BDA9227CCD73001D28F9 /* EventTableViewCell.xib in Resources */,
 				AF020F0522757D16009756C0 /* LoginViewController.xib in Resources */,
 				AF7C71FC2274D68800F7820A /* Main.storyboard in Resources */,
@@ -438,23 +454,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBA1E0E22C9579F00C328D8 /* ThreadTableViewCell.swift in Sources */,
 				4859775320A68B1C00429CB3 /* EventsViewController.swift in Sources */,
 				4859775720A68C6F00429CB3 /* NavigationController.swift in Sources */,
 				4859775520A68BF500429CB3 /* AppController.swift in Sources */,
 				AF111FC92298C50A000ABDA7 /* EventTableButton.swift in Sources */,
 				481A352E20A8E956008CD16B /* UICollectionView+Additions.swift in Sources */,
 				4859775020A68AF800429CB3 /* LoginViewController.swift in Sources */,
+				AFB8274A22C9DC700050EC20 /* Thread.swift in Sources */,
 				AF9F4F312286A0C4004701C9 /* Date+Additions.swift in Sources */,
 				4859775E20A69CD500429CB3 /* UIView+Additions.swift in Sources */,
+				AFBA1E0C22C9572B00C328D8 /* ThreadViewController.swift in Sources */,
 				48AC74C720A66C2A00AA1788 /* AppDelegate.swift in Sources */,
 				4859776420A7A1BD00429CB3 /* DatabaseRepresentation.swift in Sources */,
+				AFA986F12302656800572D5D /* ThreadVoteButton.swift in Sources */,
 				4859774D20A689C700429CB3 /* AppSettings.swift in Sources */,
 				AF4AFF64228237E20040C33C /* UIButton+Additions.swift in Sources */,
 				AF35BDAB227CD8A0001D28F9 /* CardView.swift in Sources */,
-				4859776820A7D34400429CB3 /* Message.swift in Sources */,
 				AF35BDA8227CCD73001D28F9 /* EventTableViewCell.swift in Sources */,
 				4859776020A7993F00429CB3 /* Event.swift in Sources */,
-				4859776620A7AD3800429CB3 /* ChatViewController.swift in Sources */,
+				AFB8274C22C9DDAB0050EC20 /* Sender.swift in Sources */,
+				AF5313A722990A4800DE7D35 /* UIImageView+Additions.swift in Sources */,
 				AF50105C22758F29007F91B1 /* SubtitleTableViewCell.swift in Sources */,
 				4859775A20A68CAC00429CB3 /* UIColor+Additions.swift in Sources */,
 				481A352C20A8E6DC008CD16B /* UIImage+Additions.swift in Sources */,
