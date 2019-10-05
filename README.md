@@ -6,9 +6,10 @@
 As university students, events are posted on a variety of mediums. TurnUp aims to provide a single source for all events taking place at your campus. With the app, you can submit your event and be posted to the feed for your school. Students can ask questions about the event, and event organizers can see how many people are expected to come.
  
 ## Demo
-<img src="https://drive.google.com/uc?export=view&id=1ge9uk7KxmBe2QQKdC1DP8Rjld-6rTMmN" width="310" height="671">
+<img src="https://media.giphy.com/media/Qtp1IbCAvIxU9zG4hz/giphy.gif">
 
 ## Screenshots
+<img src="https://drive.google.com/uc?export=view&id=1Ojp1K1lUo8KtGFNbITpUxcVK8N_AQ6TO" width="310" height="671">
 <img src="https://drive.google.com/uc?export=view&id=1MXSP2fo50MhkIlTYZj64lxTbh953KVIl" width="310" height="671">
 <img src="https://drive.google.com/uc?export=view&id=1O3y45hhBxVyxtlnXF6chwZjzArTyQsJk" width="310" height="671">
  
